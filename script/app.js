@@ -1,7 +1,7 @@
 const app = {
   // ------------------------------------------------------------------
   // Datas
-  bilanApo: bilanApo,
+  data: data,
 
   // ------------------------------------------------------------------
   // Dom element
@@ -10,14 +10,27 @@ const app = {
   // ------------------------------------------------------------------
   // Methods
   init: () => {
-    console.log("app init ok ");
+    console.log(app.data);
+    app.getBilanType();
   },
 
+  getBilanType: () => {
+    // Dom element
+    const categorieBilanContainer = document.getElementById("categorieBilan");
 
-  
-  getBilanType: (e) => {
-    const bilanType = e.target.value
-    console.log(bilanType);
+    // Option in selectBilanType
+    for (const bilan of data) {
+      let optionBilanType = document.createElement("option");
+      optionBilanType.innerText = bilan.name;
+
+      bilan.categories.forEach((e) => {
+        let bilanInputCategorie = document.createElement("h3");
+        bilanInputCategorie.innerText = e.name
+        categorieBilanContainer.append(bilanInputCategorie);
+      });
+
+      selectBilanType.append(optionBilanType);
+    }
   },
 };
 

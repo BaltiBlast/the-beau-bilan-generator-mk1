@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS IMPORT -->
+    <link rel="stylesheet" href="./style.css" />
+
     <title>The Beau Bilan Generator</title>
   </head>
   <body>
@@ -15,31 +19,20 @@
         <section>
           <h2>Quel type de bilan ?</h2>
           <div>
-            <input type="radio" id="inputFormation" value="formation" />
-            <label>Fin de Formation</label>
-          </div>
-          <div>
-            <input type="radio" id="inputApo" value="apotheose" />
-            <label>Fin d'Apothéose</label>
+            <select name="" id="selectBilanType">
+              <option value=""></option>
+            </select>
           </div>
         </section>
 
-        <!-- APO BILAN FORM -->
-        <section id="apoSectionForm">
-            BILAN
-        </section>
-
-        <!-- FORMATION BILAN FORM -->
-        <section id="formaSectionForm">
-            FORMA
-        </section>
-
+        <!-- APO BILAN FONDATION -->
+        <section id="categorieBilan"></section>
         <button type="submit">Générer</button>
       </form>
     </div>
 
     <!-- SCRIPTS -->
     <script src="./script/data.js"></script>
-    <script src="./script/app.js"></script>
+    <script type="module" src="./script/app.js"></script>
   </body>
 </html>
