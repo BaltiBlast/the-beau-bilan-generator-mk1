@@ -7,7 +7,39 @@
     <title>The Beau Bilan Generator</title>
   </head>
   <body>
-    <div id="app"></div>
+    <!-- APP CONTAINER -->
+    <div id="app">
+      <!-- FORM -->
+      <form>
+        <!-- BILAN TYPE TO GENERATE -->
+        <section>
+          <h2>Quel type de bilan ?</h2>
+          <div>
+            <input type="radio" id="inputFormation" value="formation" />
+            <label>Fin de Formation</label>
+          </div>
+          <div>
+            <input type="radio" id="inputApo" value="apotheose" />
+            <label>Fin d'Apothéose</label>
+          </div>
+        </section>
+
+        <!-- APO BILAN FORM -->
+        <section id="apoSectionForm">
+            BILAN
+        </section>
+
+        <!-- FORMATION BILAN FORM -->
+        <section id="formaSectionForm">
+            FORMA
+        </section>
+
+        <button type="submit">Générer</button>
+      </form>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="./script/data.js"></script>
     <script src="./script/app.js"></script>
   </body>
 </html>
