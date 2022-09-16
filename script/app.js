@@ -2,6 +2,7 @@ const app = {
   // ------------------------------------------------------------------
   // Datas
   data: data,
+  selectedBilan: {},
 
   // ------------------------------------------------------------------
   // Dom element
@@ -15,75 +16,45 @@ const app = {
   },
 
   getBilanType: () => {
-    const categorieBilanContainer = document.getElementById("selectBilanType");
+    const bilanTypeSelect = document.getElementById("selectBilanType");
 
     for (let i = 0; i < data.length; i++) {
       // create option select
-      let optionBilanName = document.createElement("option");
+      let bilanTypeOption = document.createElement("option");
 
       // data option select
-      optionBilanName.innerHTML = data[i].name;
-      optionBilanName.setAttribute("value", data[i].name.toLowerCase());
+      bilanTypeOption.innerHTML = data[i].name;
+      bilanTypeOption.setAttribute("value", data[i].name);
 
       // add option in select
-      categorieBilanContainer.append(optionBilanName);
+      bilanTypeSelect.append(bilanTypeOption);
     }
 
     // onchange event on select
-    categorieBilanContainer.addEventListener("change", (ele) => {
+    bilanTypeSelect.addEventListener("change", (ele) => {
       // get value option
       let optionValue = ele.target.value;
-
-      // returning form by value
-      switch (optionValue) {
-        case "fondations":
-          app.form.innerHTML = ""
-          app.fondationsForm();
-          break;
-
-        case "approfondissement":
-          app.form.innerHTML = ""
-          app.approfondissementForm();
-          break;
-
-        case "apothéose":
-          app.form.innerHTML = ""
-          console.log("switch apothéose");
-          break;
-
-        case "fin de formation":
-          app.form.innerHTML = ""
-          console.log("switch fin de forma");
-          break;
-
-        default:
-          console.log("switch y a R ");
-      }
+      app.form.innerHTML = "";
+      app.getBilan(optionValue)
     });
   },
 
-  fondationsForm: () => {
-    const dataFondations = data.slice(0, 1);
-
-    dataFondations.forEach((element) => {
-      for (const categorie of element.categories) {
-        let title = document.createElement("h3");
-        title.innerText = categorie.name;
-        app.form.append(title);
-      }
-    });
+  getBilan: async (bilanType) => {
+    console.log("getBilan");
+    app.selectedBilan = await data.find(bilan => bilan.name === bilanType)
+    console.log(app.selectedBilan);
+    app.createForm()
   },
 
-  approfondissementForm: () => {
-    const dataApprofondissement = data.slice(1, 2);
-    dataApprofondissement.forEach((element) => {
-      for (const categorie of element.categories) {
-        let title = document.createElement("h3");
-        title.innerText = categorie.name;
-        app.form.append(title);
-      }
-    });
+  createForm: () => {
+    let categories = app.selectedBilan.categories
+    for (const categorie of categories) {
+      let title = document.createElement("h3");
+      title.innerText = categorie.name;
+      app.form.append(title);
+    }
   },
+
 };
 
 document.addEventListener("DOMContentLoaded", app.init());
