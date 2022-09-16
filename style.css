@@ -1,7 +1,11 @@
 .hide {
-    display: none;
+  display: none;
 }
 
 .show {
-             display: block;
+  display: block;
+}
+
+.flex-test {
+  display: flex;
 }
